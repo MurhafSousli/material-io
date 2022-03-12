@@ -4,7 +4,7 @@ import { Observable, map } from 'rxjs';
 import { DocSegment, DocContentType } from '../components.data';
 
 @Component({
-  selector: 'app-component-examples',
+  selector: 'component-examples',
   templateUrl: './component-examples.component.html',
   styleUrls: ['./component-examples.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

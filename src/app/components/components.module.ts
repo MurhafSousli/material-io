@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
+import { ComponentPageRoutingModule } from './components-routing.module';
+
+import { ComponentNavComponent } from './component-nav/component-nav.component';
 import { ComponentsPageComponent } from './components-page/components-page.component';
 import { ComponentViewerComponent } from './component-viewer/component-viewer.component';
 import { ComponentOverviewComponent } from './component-overview/component-overview.component';
-import { ComponentNavComponent } from './component-nav/component-nav.component';
 import { ComponentExamplesComponent } from './component-examples/component-examples.component';
-import { RouterModule } from '@angular/router';
-
-
 
 @NgModule({
   declarations: [
@@ -19,9 +19,9 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild([
-      
-    ])
+    ComponentPageRoutingModule,
+    SharedModule
   ]
 })
-export class ComponentsModule { }
+export class ComponentsModule {
+}

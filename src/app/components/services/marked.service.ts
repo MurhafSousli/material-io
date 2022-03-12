@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { marked } from 'marked';
 import { map, Observable } from 'rxjs';
 import { highlightCodeBlock } from './highlight-code-block';
-import { STORY_CONFIG, StoryConfig } from '../story';
 import { DocsMarkdownRenderer } from './docs-marked-renderer';
+import { StoryConfig, STORY_CONFIG } from './metabook.model';
 
 @Injectable({
   providedIn: 'root'

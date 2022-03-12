@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { StoryService } from '../services/story.service';
 
 @Component({
   selector: 'app-component-nav',
