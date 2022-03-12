@@ -1,0 +1,22 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.docs-navbar-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+  color: var(--meta-font-color);
+  background-color: var(--meta-primary-color);
+  height: var(--meta-nav-height);
+}
+
+.docs-metabook-logo {
+  height: 26px;
+  margin: 0 4px 3px 0;
+}

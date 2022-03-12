@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@import 'material.scss';
+
+:root {
+  --meta-primary-color: #673ab7;
+  --meta-secondary-color: #673ab7;
+  --meta-font-color: #ffffff;
+  --meta-background-color: #fafafa;
+  --meta-nav-height: 56px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  background-color: var(--meta-background-color);
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue Light", "Helvetica Neue", Helvetica,
+    Arial, "Lucida Grande", sans-serif;
+}
