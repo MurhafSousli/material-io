@@ -1,3 +1,6 @@
-:host {
-  display: block;
+.docs-markdown {
+  p, ul, ol {
+    font-size: 16px;
+    line-height: 28px;
+  }
 }

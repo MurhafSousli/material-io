@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px;
+}
+
+svg {
+  height: 300px;
+  max-width: 100%;
+  margin-right: 32px;
+}
+
+.shield-left {
+  fill: var(--meta-primary-color);
+}
+
+.shield-right {
+  fill: #32408f;
+}
+
+.eye {
+  fill: var(--meta-background-color);
+}
+
+a + a {
+  margin-left: 16px;
+}

@@ -1,3 +1,37 @@
 :host {
-  display: block;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+}
+
+.docs-component-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+main {
+  flex: 1;
+  display: flex;
+}
+
+header {
+  height: 80px;
+  box-shadow: inset 0 -3px 8px 0 rgba(0, 0, 0, 0.08);
+  //background-color: hsl(var(--meta-primary-color-hue), 89.7%, 54.1%);
+  background-color: var(--meta-primary-color);
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  padding-left: 20px;
+
+  h1 {
+    font-weight: 300;
+    margin: 0;
+    padding: 28px 8px;
+    font-size: 20px;
+    outline: none;
+  }
 }

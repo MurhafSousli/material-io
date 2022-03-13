@@ -1,4 +1,4 @@
-import * as highlightJs from 'highlight.js';
+import highlightJs from 'highlight.js';
 
 (window as any).hljs = highlightJs;
 

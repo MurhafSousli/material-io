@@ -5,6 +5,7 @@ import { ComponentViewerComponent } from './component-viewer/component-viewer.co
 import { ComponentOverviewComponent } from './component-overview/component-overview.component';
 import { ComponentExamplesComponent } from './component-examples/component-examples.component';
 import { ComponentResolver } from './resolver/component.resolver';
+import { ComponentsCategoriesComponent } from './components-categories/components-categories.component';
 
 @NgModule({
   imports: [
@@ -14,13 +15,13 @@ import { ComponentResolver } from './resolver/component.resolver';
         component: ComponentsPageComponent,
         children: [
           {
+            path: 'categories',
+            component: ComponentsCategoriesComponent
+          },
+          {
             path: '',
             component: ComponentViewerComponent,
             children: [
-              {
-                path: '',
-                redirectTo: 'carousel'
-              },
               {
                 path: ':name',
                 children: [
@@ -44,6 +45,10 @@ import { ComponentResolver } from './resolver/component.resolver';
                 resolve: {
                   data: ComponentResolver
                 }
+              },
+              {
+                path: '**',
+                redirectTo: 'categories'
               }
             ]
           }

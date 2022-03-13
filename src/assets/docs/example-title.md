@@ -2,7 +2,7 @@ The `<carousel>` is a slideshow component for cycling through slides of images, 
 
 The carousel organize content into separate views where only one view can be visible at a time.
 
-<!-- example(ExampleCarouselComponent) -->
+<!-- example(ExampleTitleComponent) -->
 
 Add carousel item by add a template with the `carousel-item` directive inside the `carousel`.
 
@@ -13,7 +13,3 @@ Add carousel item by add a template with the `carousel-item` directive inside th
   <ng-template carouselItem> Content 3 </ng-template>
 </carousel>
 ```
-
-#### Multiple elements
-
-

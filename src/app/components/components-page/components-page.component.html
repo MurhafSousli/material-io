@@ -1,1 +1,17 @@
-<p>components-page works!</p>
+<mat-sidenav-container>
+  <mat-sidenav mode="over">
+    <app-component-nav class="sidenav"></app-component-nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="docs-component-sidenav-content">
+      <header class="docs-primary-header component-page-header">
+        <h1>{{ title$ | async }}</h1>
+      </header>
+      <main>
+        <app-component-nav></app-component-nav>
+        <router-outlet></router-outlet>
+      </main>
+      <app-footer></app-footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

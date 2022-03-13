@@ -14,7 +14,7 @@ export class ComponentOverviewComponent {
   DocType = DocContentType;
 
   doc$: Observable<DocSegment[]> = this.activatedRoute.data.pipe(
-    map((data: Data) => data.data.docs)
+    map((data: Data) => data['data'].docs)
   );
 
   constructor(public activatedRoute: ActivatedRoute) {

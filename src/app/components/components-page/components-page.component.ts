@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-components-page',
@@ -6,11 +8,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./components-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ComponentsPageComponent implements OnInit {
+export class ComponentsPageComponent {
 
-  constructor() { }
+  readonly title$: Observable<string> = this.activatedRoute.firstChild.firstChild.data.pipe(
+    map((data: Data) => data['data']?.title)
+  );
 
-  ngOnInit(): void {
+  constructor(private activatedRoute: ActivatedRoute) {
   }
-
 }

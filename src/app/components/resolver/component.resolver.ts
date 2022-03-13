@@ -11,8 +11,8 @@ import {
   StoryRoute
 } from '../components.data';
 import { MarkedService } from '../services/marked.service';
-import { CompoDoc } from '../../../documentation.model';
-import { StoryService } from '../../story';
+import { StoryService } from '../services/story.service';
+import { CompoDoc } from '../services/compodoc.model';
 
 const exampleCommentRegex = /<!--\s*example\(([^)]+)\)\s*-->/g;
 
@@ -25,7 +25,7 @@ export class ComponentResolver implements Resolve<ComponentData> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ComponentData> {
-    const data: StoryRoute = this.story.routes[route.paramMap.get('name')];
+    const data: StoryRoute = this.story.routes[<string>route.paramMap.get('name')];
     if (data) {
       return this.story.documentation.pipe(
         switchMap((docs: CompoDoc) => {
@@ -44,7 +44,7 @@ export class ComponentResolver implements Resolve<ComponentData> {
     return of(null);
   }
 
-  getDoc(doc: string, docs): DocSegment[] {
+  getDoc(doc: string, docs: CompoDoc): DocSegment[] {
     return doc.split(exampleCommentRegex).map((content: string, i: number) => {
       if (i % 2 === 0) {
         return {

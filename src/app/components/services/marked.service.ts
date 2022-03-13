@@ -1,17 +1,17 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { marked } from 'marked';
 import { map, Observable } from 'rxjs';
 import { highlightCodeBlock } from './highlight-code-block';
 import { DocsMarkdownRenderer } from './docs-marked-renderer';
-import { StoryConfig, STORY_CONFIG } from './metabook.model';
+import { MetabookService } from '../../metabook/metabook.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarkedService {
 
-  constructor(@Inject(STORY_CONFIG) private config: StoryConfig, private http: HttpClient) {
+  constructor(private metabook: MetabookService, private http: HttpClient) {
 
     // Custom markdown renderer for transforming markdown files for the docs.
     const markdownRenderer = new DocsMarkdownRenderer();
@@ -21,7 +21,7 @@ export class MarkedService {
   }
 
   getMarkDownHtml(name: string): Observable<string> {
-    return this.http.get(`${ this.config.markdownDirPath }/${ name }.md`, { responseType: 'text' }).pipe(
+    return this.http.get(`${ this.metabook.config.markdownDirPath }/${ name }.md`, { responseType: 'text' }).pipe(
       map((res: string) => marked.parse(res))
     );
   }

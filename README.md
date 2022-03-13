@@ -1,27 +1,78 @@
-# Metabook
+# What is Metabook
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.
+Metabook is a simple implementation of [Material.io](https://material.io)
 
-## Development server
+**The project is still WIP**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Usage
 
-## Code scaffolding
+1. Create a new markdown file in `assets/docs`, e.g. `example-title.md`
+2. Generate a component inside `components-examples` directory and export it inside examples `components-examples.module`, e.g. `example-title-component`
+3. Export it in `index.ts` in the same directory
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To show the component and its code inside the markdown, use the following syntax:
 
-## Build
+```md
+The `<example-title>` component is bla bla bla.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Example
 
-## Running unit tests
+<!-- example(ExampleTitleComponent) -->
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Add a demo example including its source code inside your markdown using the comment syntax `<!-- example(YourComponentClassName) -->`
 
-## Running end-to-end tests
+> Note that inside the braces of the comment should contain the component class name.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. Run the task `npm run compodoc:build` to generate the documentation of the newly added component (this will generate a file `assets/docs/documentation.json`).
 
-## Further help
+> Whenever you update the examples components, you need to re-run `npm run compodoc:build` to update the source code in the documentation.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+5. Update the components list of your `MetabookModule` in `AppModule`
+
+```ts
+/**
+ * List of routes for each component page
+ */
+const metabookRoutes: StoryRoute[] = [
+  {
+    title: 'Example Title',
+    path: 'example-title'
+  },
+  {
+    title: 'Example Paragraph',
+    path: 'example-paragraph'
+  }
+];
+
+@NgModule({
+  imports: [
+    MetabookModule.forRoot({
+      routes: metabookRoutes,
+      components: [
+        ExampleTitleComponent
+      ]
+    })
+  ]
+})
+export class AppModule {
+}
+```
+
+You can override the documentation directory using the config of `MetabookModule`
+
+```ts
+MetabookModule.forRoot({
+  routes: metabookRoutes,
+  markdownDirPath: 'assets/docs',
+  documentationPath: 'assets/docs/documentation.json',
+  components: [
+    ExampleTitleComponent
+  ]
+})
+```
+
+#### Contribution
+
+Feel free to join the discussion and send PRs to the repo, I would love hear your input!

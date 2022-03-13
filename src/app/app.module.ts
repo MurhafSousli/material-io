@@ -14,6 +14,20 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalL
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { StoryRoute } from './components/components.data';
+import { MetabookModule } from './metabook/metabook.module';
+import { ExampleTitleComponent } from './components-examples';
+
+const metabookRoutes: StoryRoute[] = [
+  {
+    title: 'Example Title',
+    path: 'example-title'
+  },
+  {
+    title: 'Example Paragraph',
+    path: 'example-paragraph'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -23,9 +37,18 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    MetabookModule.forRoot({
+      routes: metabookRoutes,
+      markdownDirPath: 'assets/docs',
+      documentationPath: 'assets/docs/documentation.json',
+      components: [
+        ExampleTitleComponent
+      ]
+    })
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

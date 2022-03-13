@@ -18,7 +18,7 @@ export class DocsMarkdownRenderer extends Renderer {
    * want to create a header-link for each H2, H3, and H4 heading. This allows users to jump to
    * specific parts of the docs.
    */
-  heading(label: string, level: number, raw: string): string {
+  override heading(label: string, level: number, raw: string): string {
     if (level === 2 || level === 3 || level === 4 || level === 5 || level === 6) {
       const headingId = this._slugger.slug(raw);
       return `
@@ -49,7 +49,7 @@ export class DocsMarkdownRenderer extends Renderer {
   //   return super.link(href, title, text);
   // }
 
-  html(html: string): string {
+  override html(html: string): string {
     // html = html.replace(apiCommentRegex, (_match: string, content: string) => {
     //   // using [\s\S]* because .* does not match line breaks
     //   if (content.match(/\{[\s\S]*\}/g)) {

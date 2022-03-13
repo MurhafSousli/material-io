@@ -12,9 +12,7 @@ import { DocSegment, DocContentType } from '../components.data';
 export class ComponentExamplesComponent {
 
   examples$: Observable<DocSegment[]> = this.activatedRoute.data.pipe(
-    map((data: Data) => {
-      return data.data.docs.filter((segment: DocSegment) => segment.type === DocContentType.Component);
-    })
+    map((data: Data) => data['data'].docs.filter((segment: DocSegment) => segment.type === DocContentType.Component))
   );
 
   constructor(private activatedRoute: ActivatedRoute) {

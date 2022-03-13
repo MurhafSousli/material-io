@@ -17,6 +17,8 @@ $metabook-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 // The warn palette is optional (defaults to red).
 $metabook-warn: mat.define-palette(mat.$red-palette);
 
+$my-typography: mat.define-typography-config();
+
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $metabook-theme: mat.define-light-theme(
@@ -26,6 +28,7 @@ $metabook-theme: mat.define-light-theme(
       accent: $metabook-accent,
       warn: $metabook-warn,
     ),
+    typography: $my-typography
   )
 );
 

@@ -2,7 +2,7 @@ import { InjectionToken } from '@angular/core';
 import { ComponentType } from '@angular/cdk/portal/portal';
 import { DocContentType, StoryRoute } from '../components.data';
 
-export interface StoryConfig {
+export interface MetabookConfig {
   routes: StoryRoute[];
   components: ComponentType<unknown>[];
   markdownDirPath: string;
@@ -33,4 +33,4 @@ export interface DocSegment {
   content: ComponentType<unknown> | string;
 }
 
-export const STORY_CONFIG = new InjectionToken<StoryConfig>('STORY_CONFIG');
+export const METABOOK_CONFIG = new InjectionToken<MetabookConfig>('METABOOK_CONFIG');
