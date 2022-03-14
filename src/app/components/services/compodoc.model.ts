@@ -6,7 +6,7 @@ export interface CompoDoc {
   interceptors: any[];
   classes: Class[];
   directives: Directive[];
-  components: Component[];
+  components: ComponentDoc[];
   modules: Module[];
   miscellaneous: Miscellaneous;
   routes: Routes;
@@ -203,7 +203,7 @@ enum LinksubtypeEnum {
   Variable = 'variable',
 }
 
-interface Component {
+export interface ComponentDoc {
   name: string;
   id: string;
   file: string;

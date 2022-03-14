@@ -8,11 +8,11 @@ import {
   ComponentExampleData,
   DocSegment,
   DocContentType,
-  StoryRoute
+  StoryRoute, ComponentExampleFile
 } from '../components.data';
 import { MarkedService } from '../services/marked.service';
 import { StoryService } from '../services/story.service';
-import { CompoDoc } from '../services/compodoc.model';
+import { CompoDoc, ComponentDoc } from '../services/compodoc.model';
 
 const exampleCommentRegex = /<!--\s*example\(([^)]+)\)\s*-->/g;
 
@@ -36,7 +36,7 @@ export class ComponentResolver implements Resolve<ComponentData> {
                 docs: this.getDoc(html, docs)
               };
             }),
-            catchError(() => throwError(() => ({ title: data.title })))
+            catchError(() => of({ title: data.title, error: `Markdown file "${ data.path }.md" was not found!"` }))
           );
         })
       );
@@ -63,27 +63,28 @@ export class ComponentResolver implements Resolve<ComponentData> {
   getComponent(key: string, docs: CompoDoc): ComponentExampleData {
     const component: ComponentType<unknown> = this.story.stories[key];
     if (component) {
-      const componentData = docs.components.find((cmp) => cmp.name === component.name);
+      const componentData: ComponentDoc = docs.components.find((cmp: ComponentDoc) => cmp.name === component.name);
 
+      const files: ComponentExampleFile[] = [];
+      if (componentData) {
+        // Add component source code
+        addFile(files, 'ts',componentData.sourceCode);
+        // Add template source code
+        addFile(files, 'html',componentData.templateData);
+        // Add styles source code
+        addFile(files, 'scss',componentData.styleUrlsData[0]?.data);
+      }
       return {
-        component: new ComponentPortal(component),
-        files: [
-          {
-            language: 'ts',
-            code: componentData.sourceCode
-          },
-          {
-            language: 'html',
-            code: componentData.templateData
-          },
-          {
-            language: 'scss',
-            code: componentData.styleUrlsData[0].data
-          }
-        ]
+        files,
+        component: new ComponentPortal(component)
       };
     }
     return null;
   }
+}
 
+function addFile(files: ComponentExampleFile[], language: string, code: string): void {
+  if (code) {
+    files.push({ language, code });
+  }
 }

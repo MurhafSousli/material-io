@@ -20,7 +20,11 @@ The `<example-title>` component is bla bla bla.
 <!-- example(ExampleTitleComponent) -->
 ```
 
-Add a demo example including its source code inside your markdown using the comment syntax `<!-- example(YourComponentClassName) -->`
+Add a demo example including its source code inside your markdown using the comment syntax 
+
+```markdown
+<!-- example(YourComponentClassName) -->
+```
 
 > Note that inside the braces of the comment should contain the component class name.
 

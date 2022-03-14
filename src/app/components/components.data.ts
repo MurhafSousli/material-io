@@ -19,12 +19,15 @@ export interface DocSegment {
 export interface ComponentData {
   title: string;
   docs?: DocSegment[];
+  error?: string;
+}
+
+export interface ComponentExampleFile {
+  language: string;
+  code: string;
 }
 
 export interface ComponentExampleData {
   component: ComponentPortal<unknown>;
-  files?: {
-    language: string;
-    code: string;
-  }[];
+  files?: ComponentExampleFile[];
 }
